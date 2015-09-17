@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TinyTranslatorResourceService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorResourceService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorResourceService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorResourceService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" />
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorResourceService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Sync" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITinyTranslatorResourceService_GetProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorResourceService_GetProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorResourceService_GetResourceBundle_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourceBundle" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorResourceService_GetResourceBundle_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourceBundleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorResourceService_SyncResourceAssembly_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncResourceAssembly" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorResourceService_SyncResourceAssembly_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncResourceAssemblyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITinyTranslatorResourceService">
+    <wsdl:operation name="GetProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorResourceService/GetProjects" message="tns:ITinyTranslatorResourceService_GetProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorResourceService/GetProjectsResponse" message="tns:ITinyTranslatorResourceService_GetProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceBundle">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorResourceService/GetResourceBundle" message="tns:ITinyTranslatorResourceService_GetResourceBundle_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorResourceService/GetResourceBundleResponse" message="tns:ITinyTranslatorResourceService_GetResourceBundle_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncResourceAssembly">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorResourceService/SyncResourceAssembly" message="tns:ITinyTranslatorResourceService_SyncResourceAssembly_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorResourceService/SyncResourceAssemblyResponse" message="tns:ITinyTranslatorResourceService_SyncResourceAssembly_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITinyTranslatorResourceService" type="tns:ITinyTranslatorResourceService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProjects">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorResourceService/GetProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceBundle">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorResourceService/GetResourceBundle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncResourceAssembly">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorResourceService/SyncResourceAssembly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TinyTranslatorResourceService">
+    <wsdl:port name="BasicHttpBinding_ITinyTranslatorResourceService" binding="tns:BasicHttpBinding_ITinyTranslatorResourceService">
+      <soap:address location="http://localhost:2853/Services/TinyTranslatorResourceService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

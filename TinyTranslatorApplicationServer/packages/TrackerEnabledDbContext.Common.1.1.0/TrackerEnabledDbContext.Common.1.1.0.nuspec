@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/01/nuspec.xsd">
+  <metadata>
+    <id>TrackerEnabledDbContext.Common</id>
+    <version>1.1.0</version>
+    <title>TrackerEnabledDbContext Common Library</title>
+    <authors>Bilal Fazlani</authors>
+    <owners>Bilal Fazlani</owners>
+    <projectUrl>https://github.com/bilal-fazlani/tracker-enabled-dbcontext</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Common nuget package required for TrackerEnabledDbContext &amp; TrackerEnabledDbContext.Identity</description>
+    <summary>Common nuget package required for TrackerEnabledDbContext &amp; TrackerEnabledDbContext.Identity</summary>
+    <releaseNotes>v.1.1.0
+Async Support,
+Performance Improvement and Bug Fixes.
+--------------------------
+v1.0.0 
+Base version</releaseNotes>
+    <copyright>2015</copyright>
+    <tags>SQL Entity Framework Tacking Audit C# Database ASP.NET</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="EntityFramework" version="6.1.3" />
+      </group>
+    </dependencies>
+    <references>
+      <group targetFramework=".NETFramework4.5">
+        <reference file="TrackerEnabledDbContext.Common.dll" />
+      </group>
+    </references>
+  </metadata>
+</package>
