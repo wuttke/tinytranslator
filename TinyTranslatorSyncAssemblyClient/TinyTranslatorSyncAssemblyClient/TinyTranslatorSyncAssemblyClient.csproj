@@ -49,14 +49,30 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\TinyTranslatorApplicationServer\Reference.cs">
+    <Compile Include="AssemblyBundleCollector.cs" />
+    <Compile Include="Service References\TinyTranslatorSyncService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="AssemblyBundleCollector.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\TinyTranslatorSyncService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\TinyTranslatorSyncService\configuration.svcinfo" />
+    <None Include="Service References\TinyTranslatorSyncService\configuration91.svcinfo" />
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.Project.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.SyncStatistics.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncService.disco" />
     <None Include="App.config" />
     <Content Include="NLog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -65,17 +81,20 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Service References\TinyTranslatorApplicationServer\TinyTranslatorResourceService.wsdl" />
-    <None Include="Service References\TinyTranslatorApplicationServer\TinyTranslatorResourceService.xsd">
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncService.wsdl" />
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TinyTranslatorApplicationServer\TinyTranslatorResourceService1.xsd">
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TinyTranslatorApplicationServer\TinyTranslatorResourceService2.xsd">
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\TinyTranslatorApplicationServer\TinyTranslatorResourceService3.xsd">
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncService4.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
@@ -83,22 +102,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\TinyTranslatorApplicationServer\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\TinyTranslatorApplicationServer\TinyTranslatorResourceService.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\TinyTranslatorApplicationServer\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\TinyTranslatorApplicationServer\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\TinyTranslatorApplicationServer\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    <WCFMetadataStorage Include="Service References\TinyTranslatorSyncService\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

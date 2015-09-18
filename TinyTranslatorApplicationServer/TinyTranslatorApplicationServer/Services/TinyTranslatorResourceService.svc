@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="TinyTranslatorApplicationServer.Services.TinyTranslatorResourceService" CodeBehind="TinyTranslatorResourceService.svc.cs" %>

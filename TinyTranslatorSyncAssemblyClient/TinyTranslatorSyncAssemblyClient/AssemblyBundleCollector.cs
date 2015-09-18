@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
-using TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer;
+using TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService;
 
 namespace TinyTranslatorSyncAssemblyClient
 {
@@ -17,21 +17,48 @@ namespace TinyTranslatorSyncAssemblyClient
 
         private static Logger logger = LogManager.GetCurrentClassLogger();
         private Assembly ass;
+        private TinyTranslatorSyncServiceClient client;
 
-        public AssemblyBundleCollector(Assembly assembly)
+        private ResourceAssembly assembly;
+        private SyncStatistics statistics;
+        private List<String> existingBundles;
+
+        public AssemblyBundleCollector(Assembly assembly, TinyTranslatorSyncServiceClient client)
         {
             this.ass = assembly;
+            this.client = client;
+
+            this.statistics = new SyncStatistics();
+            this.existingBundles = new List<string>();
         }
 
-        public void CollectAssembly(ResourceAssembly assembly)
+        public SyncStatistics Statistics { get { return statistics; } }
+
+        public void CollectAssembly()
         {
+            assembly = new ResourceAssembly();
             assembly.FileFormat = ".NET Assembly";
             assembly.FileName = ass.GetName().Name;
             assembly.ProjectID = 1; // TODO
             logger.Info("Found assembly {0}", ass.FullName);
+
+            // nur Assembly
+            var stats = client.SyncBundles(assembly, new List<ResourceBundle>());
+            AddStats(stats);
         }
 
-        public void CollectBundles(List<ResourceBundle> bundles)
+        private void AddStats(SyncStatistics stats)
+        {
+            Statistics.AddedAssemblies += stats.AddedAssemblies;
+            Statistics.AddedBundles += stats.AddedBundles;
+            Statistics.AddedResources += stats.AddedResources;
+            Statistics.RemovedBundles += stats.RemovedBundles;
+            Statistics.RemovedResources += stats.RemovedResources;
+            Statistics.UpdatedBundles += stats.UpdatedBundles;
+            Statistics.UpdatedResources += stats.UpdatedResources;
+        }
+
+        public void CollectBundles()
         {
             var resourceNames = ass.GetManifestResourceNames();
             foreach (var resourceName in resourceNames)
@@ -39,8 +66,14 @@ namespace TinyTranslatorSyncAssemblyClient
                 if (resourceName.EndsWith(".resources"))
                 {
                     ResourceBundle bundle = CollectBundle(resourceName);
-                    bundles.Add(bundle);
                     logger.Info("Collected {1} resources for bundle {0}", resourceName, bundle.Resources.Count);
+
+                    var stats = client.SyncBundles(assembly, new List<ResourceBundle>() { bundle });
+                    logger.Info("Transmitted resources: {0} added, {1} updated, {2} removed",
+                        stats.AddedResources, stats.UpdatedResources, stats.RemovedResources);
+                    AddStats(stats);
+
+                    existingBundles.Add(bundle.Name);
                 }
                 else
                     logger.Info("Skipped manifest resource {0}", resourceName);
@@ -130,5 +163,10 @@ namespace TinyTranslatorSyncAssemblyClient
             }
         }
 
+        public void DeleteBundles()
+        {
+            var stats = client.SyncBundleDeletions(assembly, existingBundles);
+            AddStats(stats);
+        }
     }
 }

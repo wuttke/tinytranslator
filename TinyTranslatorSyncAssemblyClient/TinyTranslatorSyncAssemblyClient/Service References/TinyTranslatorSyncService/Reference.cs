@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
+namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService {
     using System.Runtime.Serialization;
     using System;
     
@@ -32,7 +32,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         private string ProjectLocaleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ProjectLocale> TranslationsField;
+        private System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ProjectLocale> TranslationsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -84,7 +84,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ProjectLocale> Translations {
+        public System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ProjectLocale> Translations {
             get {
                 return this.TranslationsField;
             }
@@ -193,7 +193,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.BundleSyncStatus BundleSyncStatusField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.BundleSyncStatus BundleSyncStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime CreateDateTimeField;
@@ -211,16 +211,16 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         private int ProjectIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceAssembly ResourceAssemblyField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceAssembly ResourceAssemblyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ResourceAssemblyIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.Resource> ResourcesField;
+        private System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.Resource> ResourcesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.TranslationStatus WorstTranslationStatusField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.TranslationStatus WorstTranslationStatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -233,7 +233,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.BundleSyncStatus BundleSyncStatus {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.BundleSyncStatus BundleSyncStatus {
             get {
                 return this.BundleSyncStatusField;
             }
@@ -311,7 +311,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceAssembly ResourceAssembly {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceAssembly ResourceAssembly {
             get {
                 return this.ResourceAssemblyField;
             }
@@ -337,7 +337,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.Resource> Resources {
+        public System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.Resource> Resources {
             get {
                 return this.ResourcesField;
             }
@@ -350,7 +350,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.TranslationStatus WorstTranslationStatus {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.TranslationStatus WorstTranslationStatus {
             get {
                 return this.WorstTranslationStatusField;
             }
@@ -400,7 +400,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         private int ProjectIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.TranslationStatus WorstTranslationStatusField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.TranslationStatus WorstTranslationStatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -491,7 +491,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.TranslationStatus WorstTranslationStatus {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.TranslationStatus WorstTranslationStatus {
             get {
                 return this.WorstTranslationStatusField;
             }
@@ -558,7 +558,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         private int ProjectIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceBundle ResourceBundleField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle ResourceBundleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ResourceBundleIDField;
@@ -567,19 +567,19 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         private string ResourceClassField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceSyncStatus ResourceSyncStatusField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceSyncStatus ResourceSyncStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceType ResourceTypeField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceType ResourceTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StringValueField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceTranslation> TranslationsField;
+        private System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceTranslation> TranslationsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.TranslationStatus WorstTranslationStatusField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.TranslationStatus WorstTranslationStatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -683,7 +683,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceBundle ResourceBundle {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle ResourceBundle {
             get {
                 return this.ResourceBundleField;
             }
@@ -722,7 +722,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceSyncStatus ResourceSyncStatus {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceSyncStatus ResourceSyncStatus {
             get {
                 return this.ResourceSyncStatusField;
             }
@@ -735,7 +735,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceType ResourceType {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceType ResourceType {
             get {
                 return this.ResourceTypeField;
             }
@@ -761,7 +761,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceTranslation> Translations {
+        public System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceTranslation> Translations {
             get {
                 return this.TranslationsField;
             }
@@ -774,7 +774,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.TranslationStatus WorstTranslationStatus {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.TranslationStatus WorstTranslationStatus {
             get {
                 return this.WorstTranslationStatusField;
             }
@@ -872,7 +872,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         private int ProjectIDField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.Resource ResourceField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.Resource ResourceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ResourceAssemblyIDField;
@@ -893,7 +893,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         private System.DateTime TranslationDateTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.TranslationStatus TranslationStatusField;
+        private TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.TranslationStatus TranslationStatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -958,7 +958,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.Resource Resource {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.Resource Resource {
             get {
                 return this.ResourceField;
             }
@@ -1049,7 +1049,7 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.TranslationStatus TranslationStatus {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.TranslationStatus TranslationStatus {
             get {
                 return this.TranslationStatusField;
             }
@@ -1213,56 +1213,70 @@ namespace TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TinyTranslatorApplicationServer.ITinyTranslatorResourceService")]
-    public interface ITinyTranslatorResourceService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="TinyTranslatorSyncService.ITinyTranslatorSyncService")]
+    public interface ITinyTranslatorSyncService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITinyTranslatorResourceService/GetProjects", ReplyAction="http://tempuri.org/ITinyTranslatorResourceService/GetProjectsResponse")]
-        System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.Project> GetProjects();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITinyTranslatorSyncService/GetProjects", ReplyAction="http://tempuri.org/ITinyTranslatorSyncService/GetProjectsResponse")]
+        System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.Project> GetProjects();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITinyTranslatorResourceService/GetResourceBundle", ReplyAction="http://tempuri.org/ITinyTranslatorResourceService/GetResourceBundleResponse")]
-        TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceBundle GetResourceBundle(int bundleID);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITinyTranslatorSyncService/GetResourceBundle", ReplyAction="http://tempuri.org/ITinyTranslatorSyncService/GetResourceBundleResponse")]
+        TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle GetResourceBundle(int bundleID);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITinyTranslatorResourceService/SyncResourceAssembly", ReplyAction="http://tempuri.org/ITinyTranslatorResourceService/SyncResourceAssemblyResponse")]
-        TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.SyncStatistics SyncResourceAssembly(TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceAssembly ra, System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceBundle> bundles);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITinyTranslatorSyncService/SyncResourceAssembly", ReplyAction="http://tempuri.org/ITinyTranslatorSyncService/SyncResourceAssemblyResponse")]
+        TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.SyncStatistics SyncResourceAssembly(TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceAssembly ra, System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle> bundles);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITinyTranslatorSyncService/SyncBundles", ReplyAction="http://tempuri.org/ITinyTranslatorSyncService/SyncBundlesResponse")]
+        TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.SyncStatistics SyncBundles(TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceAssembly ra, System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle> bundles);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ITinyTranslatorSyncService/SyncBundleDeletions", ReplyAction="http://tempuri.org/ITinyTranslatorSyncService/SyncBundleDeletionsResponse")]
+        TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.SyncStatistics SyncBundleDeletions(TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceAssembly ra, System.Collections.Generic.List<string> existingBundleNames);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ITinyTranslatorResourceServiceChannel : TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ITinyTranslatorResourceService, System.ServiceModel.IClientChannel {
+    public interface ITinyTranslatorSyncServiceChannel : TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ITinyTranslatorSyncService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class TinyTranslatorResourceServiceClient : System.ServiceModel.ClientBase<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ITinyTranslatorResourceService>, TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ITinyTranslatorResourceService {
+    public partial class TinyTranslatorSyncServiceClient : System.ServiceModel.ClientBase<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ITinyTranslatorSyncService>, TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ITinyTranslatorSyncService {
         
-        public TinyTranslatorResourceServiceClient() {
+        public TinyTranslatorSyncServiceClient() {
         }
         
-        public TinyTranslatorResourceServiceClient(string endpointConfigurationName) : 
+        public TinyTranslatorSyncServiceClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public TinyTranslatorResourceServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public TinyTranslatorSyncServiceClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TinyTranslatorResourceServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TinyTranslatorSyncServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public TinyTranslatorResourceServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public TinyTranslatorSyncServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.Project> GetProjects() {
+        public System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.Project> GetProjects() {
             return base.Channel.GetProjects();
         }
         
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceBundle GetResourceBundle(int bundleID) {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle GetResourceBundle(int bundleID) {
             return base.Channel.GetResourceBundle(bundleID);
         }
         
-        public TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.SyncStatistics SyncResourceAssembly(TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceAssembly ra, System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorApplicationServer.ResourceBundle> bundles) {
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.SyncStatistics SyncResourceAssembly(TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceAssembly ra, System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle> bundles) {
             return base.Channel.SyncResourceAssembly(ra, bundles);
+        }
+        
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.SyncStatistics SyncBundles(TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceAssembly ra, System.Collections.Generic.List<TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle> bundles) {
+            return base.Channel.SyncBundles(ra, bundles);
+        }
+        
+        public TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.SyncStatistics SyncBundleDeletions(TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceAssembly ra, System.Collections.Generic.List<string> existingBundleNames) {
+            return base.Channel.SyncBundleDeletions(ra, existingBundleNames);
         }
     }
 }

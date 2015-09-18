@@ -13,7 +13,7 @@ using TinyTranslatorApplicationServer.Sync;
 namespace TinyTranslatorApplicationServer.Services
 {
 
-    public class TinyTranslatorResourceService : ITinyTranslatorResourceService
+    public class TinyTranslatorSyncService : ITinyTranslatorSyncService
     {
 
         // TODO Unit Tests, IOC, EF Tracing, Security (Users!), "echte" DB
@@ -34,6 +34,16 @@ namespace TinyTranslatorApplicationServer.Services
 
         public SyncStatistics SyncResourceAssembly(ResourceAssembly ra, ICollection<ResourceBundle> bundles)
         {
+            return InnerSyncResourceAssembly(ra, bundles, true);
+        }
+
+        public SyncStatistics SyncBundles(ResourceAssembly ra, ICollection<ResourceBundle> bundles)
+        {
+            return InnerSyncResourceAssembly(ra, bundles, deleteBundles: false);
+        }
+
+        private SyncStatistics InnerSyncResourceAssembly(ResourceAssembly ra, ICollection<ResourceBundle> bundles, bool deleteBundles)
+        {
             var context = new TinyTranslatorDbContext();
 
             var task = new SyncResourcesTask(
@@ -43,7 +53,11 @@ namespace TinyTranslatorApplicationServer.Services
                 new ResourceTranslationRepository(context)
                 );
 
-            var assembly = task.SyncResourceAssembly(ra, bundles);
+            var assembly = task.SyncResourceAssembly(ra);
+            if (deleteBundles)
+                task.SyncAllBundlesWithDeletions(assembly, bundles);
+            else
+                task.SyncSomeBundles(assembly, bundles);
             context.SaveChanges();
 
             task.CalculateAssemblyStatusFromBundles(assembly);
@@ -52,5 +66,26 @@ namespace TinyTranslatorApplicationServer.Services
             return task.Statistics;
         }
 
+        public SyncStatistics SyncBundleDeletions(ResourceAssembly ra, List<string> existingBundleNames)
+        {
+            var context = new TinyTranslatorDbContext();
+
+            var task = new SyncResourcesTask(
+                new ResourceAssemblyRepository(context),
+                new ResourceBundleRepository(context),
+                new ResourceRepository(context),
+                new ResourceTranslationRepository(context)
+                );
+
+            var assembly = task.SyncResourceAssembly(ra);
+            task.DeleteNonExistingBundles(assembly, existingBundleNames);
+            context.SaveChanges();
+
+            task.CalculateAssemblyStatusFromBundles(assembly);
+            context.SaveChanges();
+
+            return task.Statistics;
+
+        }
     }
 }

@@ -25,19 +25,12 @@ namespace TinyTranslatorApplicationServer.Sync
             this.translationRepository = translationRepository;
         }
 
-        public ResourceAssembly SyncResourceAssembly(ResourceAssembly ra, ICollection<ResourceBundle> bundles)
-        {
-            var existingAssembly = SyncAssemblyOnly(ra);
-            SyncBundles(existingAssembly, bundles);
-            return existingAssembly;
-        }
-
         public SyncStatistics Statistics
         {
             get { return syncStatistics; }
         }
 
-        private void SyncBundles(ResourceAssembly existingAssembly, ICollection<ResourceBundle> newBundles)
+        public void SyncAllBundlesWithDeletions(ResourceAssembly existingAssembly, ICollection<ResourceBundle> newBundles)
         {
             var existingBundles = bundleRepository.FindBundlesForAssembly(existingAssembly);
 
@@ -59,14 +52,29 @@ namespace TinyTranslatorApplicationServer.Sync
             }
         }
 
+        public void SyncSomeBundles(ResourceAssembly existingAssembly, ICollection<ResourceBundle> newBundles)
+        {
+            foreach (var newBundle in newBundles)
+            {
+                var existingBundle = bundleRepository.FindBundleByName(existingAssembly.ProjectID, existingAssembly.ID, newBundle.Name);
+                if (existingBundle == null)
+                    CreateNewBundle(existingAssembly, newBundle);
+                else
+                    UpdateBundle(existingAssembly, existingBundle, newBundle);
+            }
+        }
+
         private void MarkBundleDeleted(ResourceBundle bundle)
         {
-            syncStatistics.RemovedBundles++;
+            if (bundle.BundleSyncStatus != BundleSyncStatus.REMOVED)
+            {
+                syncStatistics.RemovedBundles++;
 
-            bundle.BundleSyncStatus = BundleSyncStatus.REMOVED;
-            bundle.LastChangeDateTime = DateTime.UtcNow;
+                bundle.BundleSyncStatus = BundleSyncStatus.REMOVED;
+                bundle.LastChangeDateTime = DateTime.UtcNow;
 
-            MarkResourcesDeletedForBundle(bundle);
+                MarkResourcesDeletedForBundle(bundle);
+            }
         }
 
         private void MarkResourcesDeletedForBundle(ResourceBundle bundle)
@@ -78,10 +86,13 @@ namespace TinyTranslatorApplicationServer.Sync
 
         private void MarkResourceDeleted(Resource resourceToDelete)
         {
-            syncStatistics.RemovedResources++;
+            if (resourceToDelete.ResourceSyncStatus != ResourceSyncStatus.REMOVED)
+            {
+                syncStatistics.RemovedResources++;
 
-            resourceToDelete.ResourceSyncStatus = ResourceSyncStatus.REMOVED;
-            resourceToDelete.LastChangeDateTime = DateTime.UtcNow;
+                resourceToDelete.ResourceSyncStatus = ResourceSyncStatus.REMOVED;
+                resourceToDelete.LastChangeDateTime = DateTime.UtcNow;
+            }
         }
 
         private void UpdateBundle(ResourceAssembly existingAssembly, ResourceBundle existingBundle, ResourceBundle newBundle)
@@ -213,12 +224,12 @@ namespace TinyTranslatorApplicationServer.Sync
             bundle.WorstTranslationStatus = worstStatus;
         }
 
-        private ResourceAssembly SyncAssemblyOnly(ResourceAssembly ra)
+        public ResourceAssembly SyncResourceAssembly(ResourceAssembly template)
         {
-            var existingAssembly = assemblyRepository.FindAssemblyByName(ra.ProjectID, ra.FileName);
+            var existingAssembly = assemblyRepository.FindAssemblyByName(template.ProjectID, template.FileName);
             if (existingAssembly == null)
             {
-                existingAssembly = CreateNewAssembly(ra);
+                existingAssembly = CreateNewAssembly(template);
             }
             else
             {
@@ -245,5 +256,14 @@ namespace TinyTranslatorApplicationServer.Sync
         {
             assembly.WorstTranslationStatus = bundleRepository.GetWorstTranslationStatusForAssemblyFromBundles(assembly);
         }
+
+        public void DeleteNonExistingBundles(ResourceAssembly ra, List<string> existingBundleNames)
+        {
+            var bundleList = bundleRepository.FindBundlesForAssembly(ra);
+            bundleList.RemoveAll(b => existingBundleNames.Contains(b.Name));
+            foreach (var remainingExistingBundle in bundleList)
+                MarkBundleDeleted(remainingExistingBundle);
+        }
+
     }
 }

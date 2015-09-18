@@ -98,7 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Services\TinyTranslatorImportExportService.svc" />
-    <Content Include="Services\TinyTranslatorResourceService.svc" />
+    <Content Include="Services\TinyTranslatorSyncService.svc" />
     <Content Include="Services\TinyTranslatorStatisticsService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -121,8 +121,8 @@
     <Compile Include="Services\TinyTranslatorImportExportService.svc.cs">
       <DependentUpon>TinyTranslatorImportExportService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Services\TinyTranslatorResourceService.svc.cs">
-      <DependentUpon>TinyTranslatorResourceService.svc</DependentUpon>
+    <Compile Include="Services\TinyTranslatorSyncService.svc.cs">
+      <DependentUpon>TinyTranslatorSyncService.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\ITinyTranslatorResourceService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

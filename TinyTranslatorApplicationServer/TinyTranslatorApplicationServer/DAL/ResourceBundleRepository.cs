@@ -29,15 +29,24 @@ namespace TinyTranslatorApplicationServer.DAL
 
         public TranslationStatus GetWorstTranslationStatusForAssemblyFromBundles(ResourceAssembly ra)
         {
-            return (from bundle in context.ResourceBundles
-                    where bundle.ResourceAssemblyID == ra.ID
+            var status = (from bundle in context.ResourceBundles
+                    where bundle.ProjectID == ra.ProjectID
+                        && bundle.ResourceAssemblyID == ra.ID
                         && bundle.WorstTranslationStatus >= 0
                         && bundle.BundleSyncStatus != BundleSyncStatus.REMOVED
-                    select bundle.WorstTranslationStatus).Min();
-            // was passiert, wenn kein Status da ist, um Min() zu machen?
+                    select (TranslationStatus?)bundle.WorstTranslationStatus).Min();
+
+            return status.HasValue ? status.Value : TranslationStatus.NO_NEED_TO_TRANSLATE;
         }
 
-        // Statistiken?
+        public ResourceBundle FindBundleByName(int projectID, int assemblyID, string bundleName)
+        {
+            return (from bundle in context.ResourceBundles
+                    where bundle.ProjectID == projectID
+                        && bundle.ResourceAssemblyID == assemblyID
+                        && bundle.Name == bundleName
+                    select bundle).FirstOrDefault();
+        }
 
     }
 }
