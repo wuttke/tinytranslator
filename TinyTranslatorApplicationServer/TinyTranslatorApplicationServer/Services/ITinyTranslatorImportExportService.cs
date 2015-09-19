@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using TinyTranslatorApplicationServer.Model;
 
 namespace TinyTranslatorApplicationServer.Services
 {
@@ -12,14 +13,27 @@ namespace TinyTranslatorApplicationServer.Services
     public interface ITinyTranslatorImportExportService
     {
 
+        /// <summary>
+        /// Imports resources from a whole assembly with all bundles.
+        /// Also processes deletions.
+        /// This runs a long time. (TODO maybe offer background call w/out statistics)
+        /// </summary>
+        // TODO Project ID via Web Param?
         [OperationContract]
-        void ImportTranslationsFromCsv(Stream csvFile);
+        ResourceSyncStatistics ImportResourceFromAssembly(Stream assemblyStream);
+
+        [OperationContract]
+        TranslationSyncStatistics ImportTranslationsFromCsv(Stream csvFile);
         
         [OperationContract]
         Stream ExportTranslationsToCsv(TranslationSelection translations);
 
+        /// <summary>
+        /// Imports translations from the given satellite assembly.
+        /// </summary>
+        // TODO Project ID via Web Param?
         [OperationContract]
-        void ImportTranslationsFromAssembly(Stream assemblyFile);
+        TranslationSyncStatistics ImportTranslationsFromAssembly(Stream assemblyStream);
         
         [OperationContract]
         Stream ExportTranslationsToAssembly(TranslationSelection translations);

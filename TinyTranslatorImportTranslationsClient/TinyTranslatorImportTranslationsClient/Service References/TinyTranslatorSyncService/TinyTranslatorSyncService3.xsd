@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" />
+  <xs:import schemaLocation="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetProjects">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="GetProjectsResult" nillable="true" type="q1:ArrayOfProject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncResourceAssembly">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="ra" nillable="true" type="q2:ResourceAssembly" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="bundles" nillable="true" type="q3:ArrayOfResourceBundle" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncResourceAssemblyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="SyncResourceAssemblyResult" nillable="true" type="q4:ResourceSyncStatistics" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncBundles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="ra" nillable="true" type="q5:ResourceAssembly" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="bundles" nillable="true" type="q6:ArrayOfResourceBundle" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncBundlesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="SyncBundlesResult" nillable="true" type="q7:ResourceSyncStatistics" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncBundleDeletions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="ra" nillable="true" type="q8:ResourceAssembly" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="existingBundleNames" nillable="true" type="q9:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncBundleDeletionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="SyncBundleDeletionsResult" nillable="true" type="q10:ResourceSyncStatistics" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncTranslations">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="assembly" nillable="true" type="q11:ResourceAssembly" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="bundle" nillable="true" type="q12:ResourceBundle" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="translations" nillable="true" type="q13:ArrayOfResourceTranslation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SyncTranslationsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="SyncTranslationsResult" nillable="true" type="q14:TranslationSyncStatistics" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

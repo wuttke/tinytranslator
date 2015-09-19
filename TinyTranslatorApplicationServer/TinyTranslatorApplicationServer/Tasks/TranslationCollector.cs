@@ -33,30 +33,37 @@ namespace TinyTranslatorApplicationServer.Tasks
 
         public TranslationSyncStatistics CollectTranslations()
         {
+            String assemblyName = assembly.GetName().Name;
+            assemblyName = assemblyName.Substring(0, assemblyName.LastIndexOf('.')); // strip ".resources"
+
             var bundleNames = assembly.GetManifestResourceNames();
-            
+
             foreach (var bundleName in bundleNames)
             {
                 if (bundleName.EndsWith(".resources"))
-                    CollectBundle(bundleName);
+                    CollectBundle(assemblyName, bundleName);
             }
 
             return statistics;
         }
 
-        private void CollectBundle(string bundleName)
+        private void CollectBundle(string assemblyName, string bundleName)
         {
+            String strippedBundleName = bundleName.Substring(0, bundleName.Length - ".resources".Length); // Strip ".resources" postfix
+            String locale = strippedBundleName.Substring(strippedBundleName.LastIndexOf('.') + 1);
+            strippedBundleName = strippedBundleName.Substring(0, strippedBundleName.LastIndexOf('.')); // Strip "locale" postfix
+
             var translations = new List<ResourceTranslation>();
 
             var stream = assembly.GetManifestResourceStream(bundleName);
             var reader = new ResourceReader(stream);
             IDictionaryEnumerator dict = reader.GetEnumerator();
             while (dict.MoveNext())
-                CollectTranslatedResource(bundleName, dict, reader, translations);
+                CollectTranslatedResource(strippedBundleName, dict, reader, translations);
 
             if (translations.Count > 0)
             {
-                var stats = translationSyncCallback(projectID, assembly.GetName().Name, bundleName, translations);
+                var stats = translationSyncCallback(projectID, assemblyName, strippedBundleName, translations);
                 AddStats(stats);
             }
         }

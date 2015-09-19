@@ -21,14 +21,6 @@ namespace TinyTranslatorApplicationServer.Services
         /// </summary>
         [OperationContract]
         ICollection<Project> GetProjects();
-        
-        /// <summary>
-        /// Imports resources from a whole assembly with all bundles.
-        /// Also processes deletions.
-        /// This runs a long time. (TODO maybe offer background call w/out statistics)
-        /// </summary>
-        [OperationContract]
-        ResourceSyncStatistics ImportResourceFromAssembly(Stream assemblyStream);
 
         /// <summary>
         /// Syncs a whole assembly with all bundles.
@@ -52,13 +44,6 @@ namespace TinyTranslatorApplicationServer.Services
         /// </summary>
         [OperationContract]
         ResourceSyncStatistics SyncBundleDeletions(ResourceAssembly ra, List<String> existingBundleNames);
-
-        /// <summary>
-        /// Imports translations from the given satellite assembly.
-        /// </summary>
-        // TODO Project ID via Web Param?
-        [OperationContract]
-        TranslationSyncStatistics ImportTranslationsFromAssembly(Stream assemblyStream);
 
         /// <summary>
         /// Imports translations (not overwriting existing translations) to the given bundle.

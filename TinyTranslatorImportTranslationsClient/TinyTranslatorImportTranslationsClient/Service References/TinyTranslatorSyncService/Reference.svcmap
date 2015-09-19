@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d70bd008-84b5-44c7-9390-114fe2964169" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2853/Services/TinyTranslatorSyncService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TinyTranslatorSyncService.disco" MetadataType="Disco" ID="09cf3835-b154-4211-9903-703d6a42d016" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorSyncService.svc?disco" />
+    <MetadataFile FileName="TinyTranslatorSyncService.wsdl" MetadataType="Wsdl" ID="52c90b63-8ebf-4fe6-96c2-e818c100e324" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorSyncService.svc?wsdl" />
+    <MetadataFile FileName="TinyTranslatorSyncService.xsd" MetadataType="Schema" ID="cfeaa57f-0906-4235-84c0-3d7771a4617a" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd3" />
+    <MetadataFile FileName="TinyTranslatorSyncService1.xsd" MetadataType="Schema" ID="78a40702-bec5-4791-924b-08f13e042b47" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TinyTranslatorSyncService2.xsd" MetadataType="Schema" ID="e1896472-703e-4567-ba8f-fec47fd0bf76" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TinyTranslatorSyncService3.xsd" MetadataType="Schema" ID="2ba275b4-8d7c-49d2-9d26-e8b2bd61f845" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

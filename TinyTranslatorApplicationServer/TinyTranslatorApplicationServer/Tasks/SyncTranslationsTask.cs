@@ -81,7 +81,7 @@ namespace TinyTranslatorApplicationServer.Tasks
             }
 
             // try find translation
-            var existingTranslation = existingResource.Translations.First(t => t.Locale == translation.Locale);
+            var existingTranslation = existingResource.Translations.FirstOrDefault(t => t.Locale == translation.Locale);
             if (existingTranslation != null &&
                 (existingTranslation.StringValue == translation.StringValue &&
                 existingTranslation.BinaryValue.SequenceEqual(translation.BinaryValue) ||

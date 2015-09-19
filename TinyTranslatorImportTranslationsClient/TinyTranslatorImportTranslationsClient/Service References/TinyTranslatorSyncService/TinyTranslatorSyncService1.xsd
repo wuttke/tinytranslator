@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfProject">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Project" nillable="true" type="tns:Project" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProject" nillable="true" type="tns:ArrayOfProject" />
+  <xs:complexType name="Project">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProjectLocale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfProjectLocale" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Project" nillable="true" type="tns:Project" />
+  <xs:complexType name="ArrayOfProjectLocale">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ProjectLocale" nillable="true" type="tns:ProjectLocale" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProjectLocale" nillable="true" type="tns:ArrayOfProjectLocale" />
+  <xs:complexType name="ProjectLocale">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="LocaleCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProjectID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ProjectLocale" nillable="true" type="tns:ProjectLocale" />
+  <xs:complexType name="ResourceAssembly">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreateDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FileFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="LastSyncDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProjectID" type="xs:int" />
+      <xs:element minOccurs="0" name="WorstTranslationStatus" type="tns:TranslationStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResourceAssembly" nillable="true" type="tns:ResourceAssembly" />
+  <xs:simpleType name="TranslationStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NOT_TRANSLATED" />
+      <xs:enumeration value="NEW">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CORRECT">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">20</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IMPORTED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">30</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="APPROVED">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">70</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FINAL">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">100</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="NO_NEED_TO_TRANSLATE">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">-1</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TranslationStatus" nillable="true" type="tns:TranslationStatus" />
+  <xs:complexType name="ArrayOfResourceBundle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResourceBundle" nillable="true" type="tns:ResourceBundle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResourceBundle" nillable="true" type="tns:ArrayOfResourceBundle" />
+  <xs:complexType name="ResourceBundle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BundleSyncStatus" type="tns:BundleSyncStatus" />
+      <xs:element minOccurs="0" name="CreateDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="LastChangeDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProjectID" type="xs:int" />
+      <xs:element minOccurs="0" name="ResourceAssembly" nillable="true" type="tns:ResourceAssembly" />
+      <xs:element minOccurs="0" name="ResourceAssemblyID" type="xs:int" />
+      <xs:element minOccurs="0" name="Resources" nillable="true" type="tns:ArrayOfResource" />
+      <xs:element minOccurs="0" name="WorstTranslationStatus" type="tns:TranslationStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResourceBundle" nillable="true" type="tns:ResourceBundle" />
+  <xs:simpleType name="BundleSyncStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADDED" />
+      <xs:enumeration value="UPDATED" />
+      <xs:enumeration value="REMOVED" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="BundleSyncStatus" nillable="true" type="tns:BundleSyncStatus" />
+  <xs:complexType name="ArrayOfResource">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Resource" nillable="true" type="tns:Resource" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResource" nillable="true" type="tns:ArrayOfResource" />
+  <xs:complexType name="Resource">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BinaryValue" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="CreateDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DesignerSupportFlag" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastChangeDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProjectID" type="xs:int" />
+      <xs:element minOccurs="0" name="ResourceBundle" nillable="true" type="tns:ResourceBundle" />
+      <xs:element minOccurs="0" name="ResourceBundleID" type="xs:int" />
+      <xs:element minOccurs="0" name="ResourceClass" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ResourceSyncStatus" type="tns:ResourceSyncStatus" />
+      <xs:element minOccurs="0" name="ResourceType" type="tns:ResourceType" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Translations" nillable="true" type="tns:ArrayOfResourceTranslation" />
+      <xs:element minOccurs="0" name="WorstTranslationStatus" type="tns:TranslationStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Resource" nillable="true" type="tns:Resource" />
+  <xs:simpleType name="ResourceSyncStatus">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ADDED" />
+      <xs:enumeration value="UPDATED" />
+      <xs:enumeration value="REMOVED" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResourceSyncStatus" nillable="true" type="tns:ResourceSyncStatus" />
+  <xs:simpleType name="ResourceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="STRING" />
+      <xs:enumeration value="STRING_ARRAY" />
+      <xs:enumeration value="IMAGE" />
+      <xs:enumeration value="OTHER_BINARY" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ResourceType" nillable="true" type="tns:ResourceType" />
+  <xs:complexType name="ArrayOfResourceTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ResourceTranslation" nillable="true" type="tns:ResourceTranslation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfResourceTranslation" nillable="true" type="tns:ArrayOfResourceTranslation" />
+  <xs:complexType name="ResourceTranslation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BinaryValue" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="Locale" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProjectID" type="xs:int" />
+      <xs:element minOccurs="0" name="Resource" nillable="true" type="tns:Resource" />
+      <xs:element minOccurs="0" name="ResourceAssemblyID" type="xs:int" />
+      <xs:element minOccurs="0" name="ResourceBundleID" type="xs:int" />
+      <xs:element minOccurs="0" name="ResourceID" type="xs:int" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TranslationBy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TranslationDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="TranslationStatus" type="tns:TranslationStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResourceTranslation" nillable="true" type="tns:ResourceTranslation" />
+  <xs:complexType name="ResourceSyncStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedAssemblies" type="xs:int" />
+      <xs:element minOccurs="0" name="AddedBundles" type="xs:int" />
+      <xs:element minOccurs="0" name="AddedResources" type="xs:int" />
+      <xs:element minOccurs="0" name="RemovedBundles" type="xs:int" />
+      <xs:element minOccurs="0" name="RemovedResources" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdatedBundles" type="xs:int" />
+      <xs:element minOccurs="0" name="UpdatedResources" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ResourceSyncStatistics" nillable="true" type="tns:ResourceSyncStatistics" />
+  <xs:complexType name="TranslationSyncStatistics">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddedTranslations" type="xs:int" />
+      <xs:element minOccurs="0" name="ExistingTranslations" type="xs:int" />
+      <xs:element minOccurs="0" name="ResourceMismatch" type="xs:int" />
+      <xs:element minOccurs="0" name="ResourceNotFound" type="xs:int" />
+      <xs:element minOccurs="0" name="UnchangedResource" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TranslationSyncStatistics" nillable="true" type="tns:TranslationSyncStatistics" />
+</xs:schema>

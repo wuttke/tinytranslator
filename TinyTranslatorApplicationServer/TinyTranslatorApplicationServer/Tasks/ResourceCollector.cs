@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -79,10 +80,12 @@ namespace TinyTranslatorApplicationServer.Tasks
 
         private ResourceBundle CollectBundle(string resourceName)
         {
+            Debug.Assert(resourceName.EndsWith(".resources"));
+
             var bundle = new ResourceBundle();
             bundle.CreateDateTime = DateTime.UtcNow;
             bundle.LastChangeDateTime = DateTime.UtcNow;
-            bundle.Name = resourceName;
+            bundle.Name = resourceName.Substring(0, resourceName.Length - ".resources".Length); // strip ".resources"
             bundle.Resources = new List<Resource>();
 
             CollectResourcesForBundle(resourceName, bundle);
