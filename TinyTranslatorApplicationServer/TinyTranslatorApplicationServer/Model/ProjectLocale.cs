@@ -7,7 +7,6 @@ using System.Web;
 
 namespace TinyTranslatorApplicationServer.Model
 {
-    [TrackChanges]
     public class ProjectLocale
     {
         public int ID { get; set; }

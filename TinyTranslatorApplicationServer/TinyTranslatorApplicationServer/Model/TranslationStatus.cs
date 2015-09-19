@@ -13,6 +13,7 @@ namespace TinyTranslatorApplicationServer.Model
         NOT_TRANSLATED = 0, // Nicht übersetzt
         NEW = 10, // Neu
         CORRECT = 20, // Zur Überarbeitung
+        IMPORTED = 30, // Importiert
         APPROVED = 70, // Freigegeben
         FINAL = 100, // Endgültig
 

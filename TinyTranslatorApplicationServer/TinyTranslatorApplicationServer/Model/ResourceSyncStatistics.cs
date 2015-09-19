@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace TinyTranslatorApplicationServer.Sync
+namespace TinyTranslatorApplicationServer.Model
 {
-    public class SyncStatistics
+    public class ResourceSyncStatistics
     {
         public int AddedAssemblies { get; set; }
 

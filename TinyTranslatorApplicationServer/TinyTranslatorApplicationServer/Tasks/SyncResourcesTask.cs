@@ -5,12 +5,12 @@ using System.Web;
 using TinyTranslatorApplicationServer.DAL;
 using TinyTranslatorApplicationServer.Model;
 
-namespace TinyTranslatorApplicationServer.Sync
+namespace TinyTranslatorApplicationServer.Tasks
 {
     public class SyncResourcesTask
     {
 
-        private SyncStatistics syncStatistics = new SyncStatistics();
+        private ResourceSyncStatistics syncStatistics = new ResourceSyncStatistics();
 
         private ResourceAssemblyRepository assemblyRepository;
         private ResourceBundleRepository bundleRepository;
@@ -25,7 +25,7 @@ namespace TinyTranslatorApplicationServer.Sync
             this.translationRepository = translationRepository;
         }
 
-        public SyncStatistics Statistics
+        public ResourceSyncStatistics Statistics
         {
             get { return syncStatistics; }
         }
@@ -105,7 +105,7 @@ namespace TinyTranslatorApplicationServer.Sync
 
                 existingBundle.LastChangeDateTime = DateTime.UtcNow;
                 existingBundle.BundleSyncStatus = BundleSyncStatus.UPDATED;
-                CalcBundleTranslationStatusFromResources(existingBundle);
+                new TranslationStatusUtil().CalcBundleTranslationStatusFromResources(existingBundle);
             }
         }
 
@@ -185,7 +185,7 @@ namespace TinyTranslatorApplicationServer.Sync
                 CreateNewResource(existingAssembly, bundle, newResource);
 
             // es gibt noch keine Translations für dieses Bundle
-            CalcBundleTranslationStatusFromResources(bundle);
+            new TranslationStatusUtil().CalcBundleTranslationStatusFromResources(bundle);
 
             syncStatistics.AddedBundles++;
         }
@@ -209,19 +209,6 @@ namespace TinyTranslatorApplicationServer.Sync
             resourceRepository.AddResource(resource);
 
             syncStatistics.AddedResources++;
-        }
-
-        private void CalcBundleTranslationStatusFromResources(ResourceBundle bundle)
-        {
-            TranslationStatus worstStatus = (TranslationStatus)int.MaxValue;
-            foreach (var resource in bundle.Resources)
-                if (resource.NeedsTranslation() 
-                    && resource.WorstTranslationStatus >= 0 
-                    && resource.WorstTranslationStatus < worstStatus)
-                        worstStatus = resource.WorstTranslationStatus;
-            if (worstStatus == (TranslationStatus)int.MaxValue)
-                worstStatus = TranslationStatus.NO_NEED_TO_TRANSLATE;
-            bundle.WorstTranslationStatus = worstStatus;
         }
 
         public ResourceAssembly SyncResourceAssembly(ResourceAssembly template)

@@ -5,7 +5,7 @@
       <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" />
-      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Sync" />
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
       <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorSyncService.svc?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
@@ -15,11 +15,11 @@
   <wsdl:message name="ITinyTranslatorSyncService_GetProjects_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
   </wsdl:message>
-  <wsdl:message name="ITinyTranslatorSyncService_GetResourceBundle_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetResourceBundle" />
+  <wsdl:message name="ITinyTranslatorSyncService_ImportResourceFromAssembly_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportResourceFromAssembly" />
   </wsdl:message>
-  <wsdl:message name="ITinyTranslatorSyncService_GetResourceBundle_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetResourceBundleResponse" />
+  <wsdl:message name="ITinyTranslatorSyncService_ImportResourceFromAssembly_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportResourceFromAssemblyResponse" />
   </wsdl:message>
   <wsdl:message name="ITinyTranslatorSyncService_SyncResourceAssembly_InputMessage">
     <wsdl:part name="parameters" element="tns:SyncResourceAssembly" />
@@ -39,14 +39,26 @@
   <wsdl:message name="ITinyTranslatorSyncService_SyncBundleDeletions_OutputMessage">
     <wsdl:part name="parameters" element="tns:SyncBundleDeletionsResponse" />
   </wsdl:message>
+  <wsdl:message name="ITinyTranslatorSyncService_ImportTranslationsFromAssembly_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportTranslationsFromAssembly" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorSyncService_ImportTranslationsFromAssembly_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportTranslationsFromAssemblyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorSyncService_SyncTranslations_InputMessage">
+    <wsdl:part name="parameters" element="tns:SyncTranslations" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorSyncService_SyncTranslations_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SyncTranslationsResponse" />
+  </wsdl:message>
   <wsdl:portType name="ITinyTranslatorSyncService">
     <wsdl:operation name="GetProjects">
       <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/GetProjects" message="tns:ITinyTranslatorSyncService_GetProjects_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/GetProjectsResponse" message="tns:ITinyTranslatorSyncService_GetProjects_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetResourceBundle">
-      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/GetResourceBundle" message="tns:ITinyTranslatorSyncService_GetResourceBundle_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/GetResourceBundleResponse" message="tns:ITinyTranslatorSyncService_GetResourceBundle_OutputMessage" />
+    <wsdl:operation name="ImportResourceFromAssembly">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/ImportResourceFromAssembly" message="tns:ITinyTranslatorSyncService_ImportResourceFromAssembly_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/ImportResourceFromAssemblyResponse" message="tns:ITinyTranslatorSyncService_ImportResourceFromAssembly_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="SyncResourceAssembly">
       <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/SyncResourceAssembly" message="tns:ITinyTranslatorSyncService_SyncResourceAssembly_InputMessage" />
@@ -60,6 +72,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/SyncBundleDeletions" message="tns:ITinyTranslatorSyncService_SyncBundleDeletions_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/SyncBundleDeletionsResponse" message="tns:ITinyTranslatorSyncService_SyncBundleDeletions_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="ImportTranslationsFromAssembly">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/ImportTranslationsFromAssembly" message="tns:ITinyTranslatorSyncService_ImportTranslationsFromAssembly_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/ImportTranslationsFromAssemblyResponse" message="tns:ITinyTranslatorSyncService_ImportTranslationsFromAssembly_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SyncTranslations">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/SyncTranslations" message="tns:ITinyTranslatorSyncService_SyncTranslations_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorSyncService/SyncTranslationsResponse" message="tns:ITinyTranslatorSyncService_SyncTranslations_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ITinyTranslatorSyncService" type="tns:ITinyTranslatorSyncService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -72,8 +92,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetResourceBundle">
-      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorSyncService/GetResourceBundle" style="document" />
+    <wsdl:operation name="ImportResourceFromAssembly">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorSyncService/ImportResourceFromAssembly" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -101,6 +121,24 @@
     </wsdl:operation>
     <wsdl:operation name="SyncBundleDeletions">
       <soap:operation soapAction="http://tempuri.org/ITinyTranslatorSyncService/SyncBundleDeletions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportTranslationsFromAssembly">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorSyncService/ImportTranslationsFromAssembly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SyncTranslations">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorSyncService/SyncTranslations" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

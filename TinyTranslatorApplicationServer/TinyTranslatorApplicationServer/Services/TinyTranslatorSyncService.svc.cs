@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
 using System.Text;
 using TinyTranslatorApplicationServer.DAL;
+using TinyTranslatorApplicationServer.Manager;
 using TinyTranslatorApplicationServer.Model;
-using TinyTranslatorApplicationServer.Sync;
+using TinyTranslatorApplicationServer.Tasks;
 
 namespace TinyTranslatorApplicationServer.Services
 {
@@ -21,71 +21,49 @@ namespace TinyTranslatorApplicationServer.Services
         public ICollection<Project> GetProjects()
         {
             var context = new TinyTranslatorDbContext();
-            var projects = context.Projects.Include(x => x.Translations).ToList();
-            return projects;
+            return new ProjectRepository(context).GetProjects();
         }
 
-        public ResourceBundle GetResourceBundle(int bundleID)
+        #region Resources
+        private ImportResourcesManager importResourcesManager = new ImportResourcesManager();
+        private SyncResourcesManager syncResourcesManager = new SyncResourcesManager();
+
+        public ResourceSyncStatistics ImportResourceFromAssembly(Stream assemblyStream)
         {
-            var context = new TinyTranslatorDbContext();
-            context.ResourceBundles.Include("Resources.Translations").Where(rb => rb.ID == bundleID).Single();
-            return context.ResourceBundles.Find(bundleID);
+            int projectID = 1; // TODO!
+            return importResourcesManager.ImportResourcesFromAssembly(projectID, assemblyStream);
         }
 
-        public SyncStatistics SyncResourceAssembly(ResourceAssembly ra, ICollection<ResourceBundle> bundles)
+        public ResourceSyncStatistics SyncResourceAssembly(ResourceAssembly ra, ICollection<ResourceBundle> bundles)
         {
-            return InnerSyncResourceAssembly(ra, bundles, true);
+            return syncResourcesManager.SyncResourceAssembly(ra, bundles);
         }
 
-        public SyncStatistics SyncBundles(ResourceAssembly ra, ICollection<ResourceBundle> bundles)
+        public ResourceSyncStatistics SyncBundles(ResourceAssembly ra, ICollection<ResourceBundle> bundles)
         {
-            return InnerSyncResourceAssembly(ra, bundles, deleteBundles: false);
+            return syncResourcesManager.SyncBundles(ra, bundles);
         }
 
-        private SyncStatistics InnerSyncResourceAssembly(ResourceAssembly ra, ICollection<ResourceBundle> bundles, bool deleteBundles)
+        public ResourceSyncStatistics SyncBundleDeletions(ResourceAssembly ra, List<string> existingBundleNames)
         {
-            var context = new TinyTranslatorDbContext();
-
-            var task = new SyncResourcesTask(
-                new ResourceAssemblyRepository(context),
-                new ResourceBundleRepository(context),
-                new ResourceRepository(context),
-                new ResourceTranslationRepository(context)
-                );
-
-            var assembly = task.SyncResourceAssembly(ra);
-            if (deleteBundles)
-                task.SyncAllBundlesWithDeletions(assembly, bundles);
-            else
-                task.SyncSomeBundles(assembly, bundles);
-            context.SaveChanges();
-
-            task.CalculateAssemblyStatusFromBundles(assembly);
-            context.SaveChanges();
-
-            return task.Statistics;
+            return syncResourcesManager.SyncBundleDeletions(ra, existingBundleNames);
         }
+        #endregion
 
-        public SyncStatistics SyncBundleDeletions(ResourceAssembly ra, List<string> existingBundleNames)
+        #region Translations
+        private ImportTranslationsManager importTranslationsManager = new ImportTranslationsManager();
+        private SyncTranslationsManager syncTranslationsManager = new SyncTranslationsManager();
+
+        public TranslationSyncStatistics ImportTranslationsFromAssembly(Stream assemblyStream)
         {
-            var context = new TinyTranslatorDbContext();
-
-            var task = new SyncResourcesTask(
-                new ResourceAssemblyRepository(context),
-                new ResourceBundleRepository(context),
-                new ResourceRepository(context),
-                new ResourceTranslationRepository(context)
-                );
-
-            var assembly = task.SyncResourceAssembly(ra);
-            task.DeleteNonExistingBundles(assembly, existingBundleNames);
-            context.SaveChanges();
-
-            task.CalculateAssemblyStatusFromBundles(assembly);
-            context.SaveChanges();
-
-            return task.Statistics;
-
+            int projectID = 1; // TODO!!
+            return importTranslationsManager.ImportTranslationsFromAssembly(projectID, assemblyStream);
         }
+
+        public TranslationSyncStatistics SyncTranslations(ResourceAssembly assembly, ResourceBundle bundle, List<ResourceTranslation> translations)
+        {
+            return syncTranslationsManager.SyncTranslations(assembly, bundle, translations);
+        }
+        #endregion
     }
 }

@@ -13,7 +13,7 @@ namespace TinyTranslatorApplicationServer.DAL
     {
 
         public TinyTranslatorDbContext()
-            : base("TinyTranslatorDbContext") //TinyTranslatorDb?
+            : base("TinyTranslatorDb")
         {
         }
 

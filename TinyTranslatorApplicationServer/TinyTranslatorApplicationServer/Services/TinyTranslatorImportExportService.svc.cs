@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -9,22 +10,22 @@ namespace TinyTranslatorApplicationServer.Services
 {
     public class TinyTranslatorImportExportService : ITinyTranslatorImportExportService
     {
-        public void ImportTranslationsFromCsv(System.IO.Stream csvFile)
+        public void ImportTranslationsFromCsv(Stream csvFile)
         {
             throw new NotImplementedException();
         }
 
-        public System.IO.Stream ExportTranslationsToCsv(TranslationSelection translations)
+        public Stream ExportTranslationsToCsv(TranslationSelection translations)
         {
             throw new NotImplementedException();
         }
 
-        public void ImportTranslationsFromAssembly(System.IO.Stream assemblyFile)
+        public void ImportTranslationsFromAssembly(Stream assemblyFile)
         {
             throw new NotImplementedException();
         }
 
-        public System.IO.Stream ExportTranslationsToAssembly(TranslationSelection translations)
+        public Stream ExportTranslationsToAssembly(TranslationSelection translations)
         {
             throw new NotImplementedException();
         }

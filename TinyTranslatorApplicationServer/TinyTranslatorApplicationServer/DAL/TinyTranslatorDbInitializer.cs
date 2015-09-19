@@ -25,7 +25,7 @@ namespace TinyTranslatorApplicationServer.DAL
             var assembly = new ResourceAssembly();
             assembly.CreateDateTime = DateTime.UtcNow;
             assembly.LastSyncDateTime = DateTime.UtcNow;
-            assembly.FileName = "MeonaChart.dll";
+            assembly.FileName = "MeonaTest";
             assembly.ProjectID = project.ID;
             context.ResourceAssemblies.Add(assembly);
 

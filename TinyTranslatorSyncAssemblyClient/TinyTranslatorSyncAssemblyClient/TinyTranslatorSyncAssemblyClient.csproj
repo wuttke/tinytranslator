@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AssemblyBundleCollector.cs" />
     <Compile Include="Service References\TinyTranslatorSyncService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -57,21 +56,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\DataSources\TinyTranslatorApplicationServer.Model.Project.datasource" />
+    <None Include="Properties\DataSources\TinyTranslatorApplicationServer.Model.ResourceSyncStatistics.datasource" />
+    <None Include="Properties\DataSources\TinyTranslatorApplicationServer.Model.TranslationSyncStatistics.datasource" />
     <None Include="Service References\TinyTranslatorSyncService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\TinyTranslatorSyncService\configuration.svcinfo" />
     <None Include="Service References\TinyTranslatorSyncService\configuration91.svcinfo" />
-    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.Project.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.ResourceBundle.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncAssemblyClient.TinyTranslatorSyncService.SyncStatistics.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\TinyTranslatorSyncService\TinyTranslatorSyncService.disco" />
     <None Include="App.config" />
     <Content Include="NLog.config">
@@ -103,6 +96,12 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\TinyTranslatorSyncService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\TinyTranslatorApplicationServer\TinyTranslatorApplicationServer\TinyTranslatorApplicationServer.csproj">
+      <Project>{e6017956-b76a-49ad-8d3a-357aa2a003f2}</Project>
+      <Name>TinyTranslatorApplicationServer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

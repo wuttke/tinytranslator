@@ -15,12 +15,24 @@ namespace TinyTranslatorApplicationServer.DAL
             this.context = context;
         }
 
+        public void AddTranslation(ResourceTranslation translation)
+        {
+            context.ResourceTranslations.Add(translation);
+        }
+
+        public void DeleteTranslation(ResourceTranslation translation)
+        {
+            context.ResourceTranslations.Remove(translation);
+        }
+
         public void DeleteTranslationsForResource(Resource resource)
         {
             context.ResourceTranslations.RemoveRange(
-                from translation in context.ResourceTranslations 
-                where translation.ResourceID == resource.ID select translation
+                from translation in context.ResourceTranslations
+                where translation.ResourceID == resource.ID
+                select translation
                 );
         }
+
     }
 }

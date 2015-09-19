@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TinyTranslatorApplicationServer.Model;
+using System.Data.Entity;
 
 namespace TinyTranslatorApplicationServer.DAL
 {
@@ -48,5 +49,20 @@ namespace TinyTranslatorApplicationServer.DAL
                     select bundle).FirstOrDefault();
         }
 
+        public ResourceBundle FindBundleWithResourcesAndTranslationsByName(int projectID, int assemblyID, string bundleName)
+        {
+            return (from bundle in context.ResourceBundles.Include(x => x.Resources.Select(y => y.Translations))
+                    where bundle.ProjectID == projectID
+                        && bundle.ResourceAssemblyID == assemblyID
+                        && bundle.Name == bundleName
+                    select bundle).FirstOrDefault();
+        }
+
+        public ResourceBundle GetResourceBundle(int bundleID)
+        {
+            return context.ResourceBundles
+                .Include(x => x.Resources.Select(y => y.Translations))
+                .Where(rb => rb.ID == bundleID).Single();
+        }
     }
 }

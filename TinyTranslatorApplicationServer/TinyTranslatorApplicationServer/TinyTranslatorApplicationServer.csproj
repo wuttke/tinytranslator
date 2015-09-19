@@ -100,15 +100,19 @@
     <Content Include="Services\TinyTranslatorImportExportService.svc" />
     <Content Include="Services\TinyTranslatorSyncService.svc" />
     <Content Include="Services\TinyTranslatorStatisticsService.svc" />
+    <Content Include="Services\TinyTranslatorTranslationService.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\ProjectRepository.cs" />
     <Compile Include="DAL\ResourceAssemblyRepository.cs" />
     <Compile Include="DAL\ResourceBundleRepository.cs" />
     <Compile Include="DAL\ResourceRepository.cs" />
     <Compile Include="DAL\ResourceTranslationRepository.cs" />
     <Compile Include="DAL\TinyTranslatorDbContext.cs" />
     <Compile Include="DAL\TinyTranslatorDbInitializer.cs" />
+    <Compile Include="Manager\SyncResourcesManager.cs" />
+    <Compile Include="Manager\SyncTranslationsManager.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\ProjectLocale.cs" />
     <Compile Include="Model\Resource.cs" />
@@ -116,25 +120,38 @@
     <Compile Include="Model\ResourceBundle.cs" />
     <Compile Include="Model\ResourceTranslation.cs" />
     <Compile Include="Model\TranslationStatus.cs" />
+    <Compile Include="Model\TranslationSyncStatistics.cs" />
     <Compile Include="Services\ITinyTranslatorImportExportService.cs" />
     <Compile Include="Services\ITinyTranslatorStatisticsService.cs" />
+    <Compile Include="Services\ITinyTranslatorTranslationService.cs" />
     <Compile Include="Services\TinyTranslatorImportExportService.svc.cs">
       <DependentUpon>TinyTranslatorImportExportService.svc</DependentUpon>
     </Compile>
     <Compile Include="Services\TinyTranslatorSyncService.svc.cs">
       <DependentUpon>TinyTranslatorSyncService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Services\ITinyTranslatorResourceService.cs" />
+    <Compile Include="Services\ITinyTranslatorSyncService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\TinyTranslatorStatisticsService.svc.cs">
       <DependentUpon>TinyTranslatorStatisticsService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Services\TinyTranslatorTranslationService.svc.cs">
+      <DependentUpon>TinyTranslatorTranslationService.svc</DependentUpon>
+    </Compile>
     <Compile Include="Services\TranslationSelection.cs" />
-    <Compile Include="Sync\SyncResourcesTask.cs" />
-    <Compile Include="Sync\SyncStatistics.cs" />
+    <Compile Include="Manager\AssemblyUtil.cs" />
+    <Compile Include="Tasks\ResourceCollector.cs" />
+    <Compile Include="Tasks\TranslationCollector.cs" />
+    <Compile Include="Manager\ImportResourcesManager.cs" />
+    <Compile Include="Manager\ImportTranslationsManager.cs" />
+    <Compile Include="Tasks\SyncResourcesTask.cs" />
+    <Compile Include="Model\ResourceSyncStatistics.cs" />
+    <Compile Include="Tasks\SyncTranslationsTask.cs" />
+    <Compile Include="Tasks\TranslationStatusUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DTO\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

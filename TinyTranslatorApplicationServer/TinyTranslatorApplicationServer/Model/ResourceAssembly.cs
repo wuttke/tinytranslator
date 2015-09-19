@@ -6,7 +6,6 @@ using System.Web;
 
 namespace TinyTranslatorApplicationServer.Model
 {
-    [TrackChanges]
     public class ResourceAssembly
     {
         public int ID { get; set; }
