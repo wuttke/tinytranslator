@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using TinyTranslatorApplicationServer.Model;
+using System.Data.Entity;
 
 namespace TinyTranslatorApplicationServer.DAL
 {
@@ -19,6 +20,16 @@ namespace TinyTranslatorApplicationServer.DAL
         {
             context.ResourceTranslations.Add(translation);
         }
+
+        public List<ResourceTranslation> GetTranslationsForAssemblyAndLocale(int resourceAssemblyID, String locale)
+        {
+            return (from translation in context.ResourceTranslations.Include(t => t.Resource.ResourceBundle.ResourceAssembly)
+                    where translation.ResourceAssemblyID == resourceAssemblyID
+                      && translation.Locale == locale 
+                    select translation).OrderBy(t => t.ResourceBundleID).ToList();
+        }
+
+        // TODO GetTranslations for TranslationSelection
 
         public void DeleteTranslation(ResourceTranslation translation)
         {

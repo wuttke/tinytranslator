@@ -26,6 +26,7 @@ namespace TinyTranslatorApplicationServer.Services
 
         #region Translations
         private ImportTranslationsManager importTranslationsManager = new ImportTranslationsManager();
+        private ExportTranslationsManager exportTranslationsManager = new ExportTranslationsManager();
 
         public TranslationSyncStatistics ImportTranslationsFromCsv(Stream csvFile)
         {
@@ -43,9 +44,9 @@ namespace TinyTranslatorApplicationServer.Services
             return importTranslationsManager.ImportTranslationsFromAssembly(projectID, assemblyStream);
         }
 
-        public Stream ExportTranslationsToAssembly(TranslationSelection translations)
+        public Stream ExportTranslationsToAssembly(int resourceAssemblyID, String locale)
         {
-            throw new NotImplementedException();
+            return exportTranslationsManager.ExportTranslationsAsAssembly(resourceAssemblyID, locale);
         }
         #endregion
 

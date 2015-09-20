@@ -9,9 +9,8 @@ namespace TinyTranslatorApplicationServer.Tasks
 {
     interface ITranslationExporter
     {
-        
-        void StartTranslationExport(Project project, String locale, ResourceAssembly assembly);
-        void ExportTranslationsForBundle(ResourceBundle bundle, List<ResourceTranslation> translations);
+
+        void ExportTranslationsForBundle(ResourceBundle bundle, String locale, List<ResourceTranslation> translations);
         void FinishTranslationExport();
 
     }

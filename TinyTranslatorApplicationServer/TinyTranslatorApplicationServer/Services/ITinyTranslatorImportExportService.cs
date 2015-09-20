@@ -39,9 +39,8 @@ namespace TinyTranslatorApplicationServer.Services
         /// <summary>
         /// Creates a satellite assembly for the given translations.
         /// </summary>
-        /// <param name="translations"></param>
         [OperationContract]
-        Stream ExportTranslationsToAssembly(TranslationSelection translations);
+        Stream ExportTranslationsToAssembly(int resourceAssemblyID, String locale);
 
     }
 }

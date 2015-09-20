@@ -13,7 +13,7 @@ namespace TinyTranslatorApplicationServer.Tasks
     /// <summary>
     /// Collects translations from a satellite assembly.
     /// </summary>
-    public class AssemblyTranslationCollector
+    public class AssemblyTranslationCollector : ITranslationCollector
     {
 
         private const String TRANSLATION_IMPORTER = "importer"; // TODO durch aktuellen Nutzer ersetzen?

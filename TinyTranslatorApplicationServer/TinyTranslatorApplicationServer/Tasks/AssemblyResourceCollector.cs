@@ -108,7 +108,7 @@ namespace TinyTranslatorApplicationServer.Tasks
             {
                 dictValue = dict.Value;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // wenn eine Assembly wie MeonaKernel gebraucht wird, um dict.Value aufzulösen
             }
