@@ -31,8 +31,16 @@ namespace TinyTranslatorSyncAssemblyClient
         private void ProcessFiles(string[] args)
         {
             service = new TinyTranslatorSyncServiceClient();
-            foreach (String fileName in args)
-                ProcessFile(fileName, service);
+            foreach (String arg in args)
+            {
+                // expand wildcards
+                int lastBackslashPos = arg.LastIndexOf('\\') + 1;
+                String path = arg.Substring(0, lastBackslashPos);
+                String fileNameOnly = arg.Substring(lastBackslashPos, arg.Length - lastBackslashPos);
+                String[] fileList = Directory.GetFiles(path, fileNameOnly);
+                foreach (String fileName in fileList)
+                    ProcessFile(fileName, service);
+            }
             logger.Info("Program finished successfully");
         }
 
