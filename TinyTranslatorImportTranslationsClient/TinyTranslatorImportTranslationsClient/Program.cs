@@ -25,10 +25,18 @@ namespace TinyTranslatorImportTranslationsClient
             instance.ImportTranslationsFromAssemblies(args);
         }
 
-        private void ImportTranslationsFromAssemblies(string[] fileNames)
+        private void ImportTranslationsFromAssemblies(string[] args)
         {
-            foreach (var fileName in fileNames)
-                ImportTranslationsFromAssembly(fileName);
+            foreach (String arg in args)
+            {
+                // expand wildcards
+                int lastBackslashPos = arg.LastIndexOf('\\') + 1;
+                String path = arg.Substring(0, lastBackslashPos);
+                String fileNameOnly = arg.Substring(lastBackslashPos, arg.Length - lastBackslashPos);
+                String[] fileList = Directory.GetFiles(path, fileNameOnly);
+                foreach (String fileName in fileList)
+                    ImportTranslationsFromAssembly(fileName);
+            }
         }
 
         private void ImportTranslationsFromAssembly(string fileName)

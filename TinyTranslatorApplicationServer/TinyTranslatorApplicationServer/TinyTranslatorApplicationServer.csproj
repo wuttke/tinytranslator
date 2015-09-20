@@ -110,6 +110,7 @@
     <Compile Include="DAL\ResourceRepository.cs" />
     <Compile Include="DAL\ResourceTranslationRepository.cs" />
     <Compile Include="DAL\TinyTranslatorDbContext.cs" />
+    <Compile Include="DAL\TinyTranslatorDbInitializer.cs" />
     <Compile Include="Manager\ExportTranslationsManager.cs" />
     <Compile Include="Manager\SyncResourcesManager.cs" />
     <Compile Include="Manager\SyncTranslationsManager.cs" />

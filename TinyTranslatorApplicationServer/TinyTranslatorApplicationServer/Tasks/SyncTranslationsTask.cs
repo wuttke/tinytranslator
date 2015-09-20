@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,8 @@ namespace TinyTranslatorApplicationServer.Tasks
 {
     public class SyncTranslationsTask
     {
+
+        private static Logger logger = LogManager.GetCurrentClassLogger();
 
         private ProjectRepository projectRepository;
         private ResourceAssemblyRepository assemblyRepository;
@@ -42,7 +45,10 @@ namespace TinyTranslatorApplicationServer.Tasks
 
             ResourceBundle existingBundle = bundleRepository.FindBundleWithResourcesAndTranslationsByName(assembly.ProjectID, existingAssembly.ID, bundle.Name);
             if (existingBundle == null)
-                throw new ArgumentException("Bundle not found: {0}", bundle.Name);
+            {
+                logger.Warn("Bundle not found: {0}", bundle.Name);
+                return null;
+            }
 
             foreach (var translation in translations)
             {
@@ -59,7 +65,7 @@ namespace TinyTranslatorApplicationServer.Tasks
         private void SyncTranslation(Project project, ResourceAssembly existingAssembly, ResourceBundle existingBundle, ResourceTranslation translation)
         {
             // try find resource
-            var existingResource = existingBundle.Resources.First(r => r.Key == translation.Resource.Key);
+            var existingResource = existingBundle.Resources.FirstOrDefault(r => r.Key == translation.Resource.Key);
             if (existingResource == null)
             {
                 Statistics.ResourceNotFound++;

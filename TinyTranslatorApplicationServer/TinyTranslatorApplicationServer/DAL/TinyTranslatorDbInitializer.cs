@@ -6,6 +6,8 @@ using TinyTranslatorApplicationServer.Model;
 
 namespace TinyTranslatorApplicationServer.DAL
 {
+
+    // at the moment not included with Web.config
     public class TinyTranslatorDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<TinyTranslatorDbContext>
     {
         protected override void Seed(TinyTranslatorDbContext context)
