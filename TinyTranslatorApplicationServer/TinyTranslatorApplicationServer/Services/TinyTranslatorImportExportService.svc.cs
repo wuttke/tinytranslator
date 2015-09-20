@@ -14,6 +14,18 @@ namespace TinyTranslatorApplicationServer.Services
     public class TinyTranslatorImportExportService : ITinyTranslatorImportExportService
     {
 
+        public ICollection<Project> GetProjects()
+        {
+            var context = new TinyTranslatorDbContext();
+            return new ProjectRepository(context).GetProjects();
+        }
+
+        public ICollection<ResourceAssembly> GetResourceAssembliesByProject(int projectID)
+        {
+            var context = new TinyTranslatorDbContext();
+            return new ResourceAssemblyRepository(context).GetAssembliesByProject(projectID);
+        }
+
         #region Resources
         private ImportResourcesManager importResourcesManager = new ImportResourcesManager();
 

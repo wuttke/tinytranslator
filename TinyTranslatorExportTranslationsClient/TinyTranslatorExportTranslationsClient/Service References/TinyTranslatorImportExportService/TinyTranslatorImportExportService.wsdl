@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="TinyTranslatorImportExportService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" />
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
+      <xsd:import schemaLocation="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.DAL" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="ITinyTranslatorImportExportService_GetProjects_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjects" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_GetProjects_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_GetResourceAssembliesByProject_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourceAssembliesByProject" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_GetResourceAssembliesByProject_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetResourceAssembliesByProjectResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ImportResourceFromAssembly_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportResourceFromAssembly" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ImportResourceFromAssembly_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportResourceFromAssemblyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ImportTranslationsFromCsv_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportTranslationsFromCsv" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ImportTranslationsFromCsv_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportTranslationsFromCsvResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ExportTranslationsToCsv_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExportTranslationsToCsv" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ExportTranslationsToCsv_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExportTranslationsToCsvResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ImportTranslationsFromAssembly_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImportTranslationsFromAssembly" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ImportTranslationsFromAssembly_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImportTranslationsFromAssemblyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ExportTranslationsToAssembly_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExportTranslationsToAssembly" />
+  </wsdl:message>
+  <wsdl:message name="ITinyTranslatorImportExportService_ExportTranslationsToAssembly_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExportTranslationsToAssemblyResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ITinyTranslatorImportExportService">
+    <wsdl:operation name="GetProjects">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/GetProjects" message="tns:ITinyTranslatorImportExportService_GetProjects_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/GetProjectsResponse" message="tns:ITinyTranslatorImportExportService_GetProjects_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceAssembliesByProject">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/GetResourceAssembliesByProject" message="tns:ITinyTranslatorImportExportService_GetResourceAssembliesByProject_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/GetResourceAssembliesByProjectResponse" message="tns:ITinyTranslatorImportExportService_GetResourceAssembliesByProject_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportResourceFromAssembly">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ImportResourceFromAssembly" message="tns:ITinyTranslatorImportExportService_ImportResourceFromAssembly_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ImportResourceFromAssemblyResponse" message="tns:ITinyTranslatorImportExportService_ImportResourceFromAssembly_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportTranslationsFromCsv">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ImportTranslationsFromCsv" message="tns:ITinyTranslatorImportExportService_ImportTranslationsFromCsv_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ImportTranslationsFromCsvResponse" message="tns:ITinyTranslatorImportExportService_ImportTranslationsFromCsv_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportTranslationsToCsv">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ExportTranslationsToCsv" message="tns:ITinyTranslatorImportExportService_ExportTranslationsToCsv_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ExportTranslationsToCsvResponse" message="tns:ITinyTranslatorImportExportService_ExportTranslationsToCsv_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImportTranslationsFromAssembly">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ImportTranslationsFromAssembly" message="tns:ITinyTranslatorImportExportService_ImportTranslationsFromAssembly_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ImportTranslationsFromAssemblyResponse" message="tns:ITinyTranslatorImportExportService_ImportTranslationsFromAssembly_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExportTranslationsToAssembly">
+      <wsdl:input wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ExportTranslationsToAssembly" message="tns:ITinyTranslatorImportExportService_ExportTranslationsToAssembly_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ITinyTranslatorImportExportService/ExportTranslationsToAssemblyResponse" message="tns:ITinyTranslatorImportExportService_ExportTranslationsToAssembly_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_ITinyTranslatorImportExportService" type="tns:ITinyTranslatorImportExportService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetProjects">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorImportExportService/GetProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetResourceAssembliesByProject">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorImportExportService/GetResourceAssembliesByProject" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportResourceFromAssembly">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorImportExportService/ImportResourceFromAssembly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportTranslationsFromCsv">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorImportExportService/ImportTranslationsFromCsv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportTranslationsToCsv">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorImportExportService/ExportTranslationsToCsv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImportTranslationsFromAssembly">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorImportExportService/ImportTranslationsFromAssembly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExportTranslationsToAssembly">
+      <soap:operation soapAction="http://tempuri.org/ITinyTranslatorImportExportService/ExportTranslationsToAssembly" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TinyTranslatorImportExportService">
+    <wsdl:port name="BasicHttpBinding_ITinyTranslatorImportExportService" binding="tns:BasicHttpBinding_ITinyTranslatorImportExportService">
+      <soap:address location="http://localhost:2853/Services/TinyTranslatorImportExportService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

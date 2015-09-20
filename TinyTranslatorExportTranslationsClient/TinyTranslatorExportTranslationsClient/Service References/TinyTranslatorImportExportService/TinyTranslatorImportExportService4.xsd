@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" />
+  <xs:import schemaLocation="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/Message" />
+  <xs:import schemaLocation="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.DAL" />
+  <xs:element name="GetProjects">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetProjectsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="GetProjectsResult" nillable="true" type="q1:ArrayOfProject" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceAssembliesByProject">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="projectID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetResourceAssembliesByProjectResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="GetResourceAssembliesByProjectResult" nillable="true" type="q2:ArrayOfResourceAssembly" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportResourceFromAssembly">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/Message" name="assemblyStream" type="q3:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportResourceFromAssemblyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="ImportResourceFromAssemblyResult" nillable="true" type="q4:ResourceSyncStatistics" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportTranslationsFromCsv">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.microsoft.com/Message" name="csvFile" type="q5:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportTranslationsFromCsvResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="ImportTranslationsFromCsvResult" nillable="true" type="q6:TranslationSyncStatistics" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportTranslationsToCsv">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.DAL" minOccurs="0" name="translations" nillable="true" type="q7:TranslationSelection" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportTranslationsToCsvResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/Message" name="ExportTranslationsToCsvResult" type="q8:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportTranslationsFromAssembly">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/Message" name="assemblyStream" type="q9:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImportTranslationsFromAssemblyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/TinyTranslatorApplicationServer.Model" minOccurs="0" name="ImportTranslationsFromAssemblyResult" nillable="true" type="q10:TranslationSyncStatistics" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportTranslationsToAssembly">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="resourceAssemblyID" type="xs:int" />
+        <xs:element minOccurs="0" name="locale" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExportTranslationsToAssemblyResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.microsoft.com/Message" name="ExportTranslationsToAssemblyResult" type="q11:StreamBody" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -22,6 +22,9 @@ namespace TinyTranslatorApplicationServer.Manager
 
         private Stream ExportTranslationsAsAssembly(List<ResourceTranslation> translations, String locale)
         {
+            if (translations.Count == 0)
+                return new MemoryStream();
+
             String outDir = Path.GetTempPath();
             String assemblyName = translations[0].Resource.ResourceBundle.ResourceAssembly.FileName;
             ITranslationExporter exporter = new AssemblyTranslationsExporter(outDir, assemblyName, locale);

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c6d53064-a03c-4a5a-852c-aa29c380029f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:2853/Services/TinyTranslatorImportExportService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="TinyTranslatorImportExportService.disco" MetadataType="Disco" ID="f5aea46e-7f66-4471-b9b8-b21de5aea87d" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?disco" />
+    <MetadataFile FileName="TinyTranslatorImportExportService.xsd" MetadataType="Schema" ID="5eaa13f0-2f35-441a-bbae-4bad6a297533" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd4" />
+    <MetadataFile FileName="TinyTranslatorImportExportService1.xsd" MetadataType="Schema" ID="1088a440-cd3e-4752-a51e-69a26cb3b803" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd3" />
+    <MetadataFile FileName="TinyTranslatorImportExportService2.xsd" MetadataType="Schema" ID="da705c98-6b5c-465e-ba08-b3d313cf630e" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TinyTranslatorImportExportService3.xsd" MetadataType="Schema" ID="6943ffc0-feac-47a0-b9e1-29f3e4dc0861" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TinyTranslatorImportExportService4.xsd" MetadataType="Schema" ID="03a074b5-e0e9-41ad-94d5-f7b304bb9b30" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?xsd=xsd0" />
+    <MetadataFile FileName="TinyTranslatorImportExportService.wsdl" MetadataType="Wsdl" ID="3f3add05-d637-4bb0-8611-b54686e40ba6" SourceId="1" SourceUrl="http://localhost:2853/Services/TinyTranslatorImportExportService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

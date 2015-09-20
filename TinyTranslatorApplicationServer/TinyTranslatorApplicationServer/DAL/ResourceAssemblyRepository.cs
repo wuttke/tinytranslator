@@ -28,5 +28,10 @@ namespace TinyTranslatorApplicationServer.DAL
         {
             context.ResourceAssemblies.Add(newAssembly);
         }
+
+        public ICollection<ResourceAssembly> GetAssembliesByProject(int projectID)
+        {
+            return (from ra in context.ResourceAssemblies where ra.ProjectID == projectID select ra).ToList();
+        }
     }
 }

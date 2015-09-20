@@ -15,6 +15,20 @@ namespace TinyTranslatorApplicationServer.Services
     {
 
         /// <summary>
+        /// Lists all projects.
+        /// </summary>
+        [OperationContract]
+        ICollection<Project> GetProjects();
+
+        /// <summary>
+        /// Lists all assemblies of a project.
+        /// </summary>
+        /// <param name="projectID"></param>
+        /// <returns></returns>
+        [OperationContract]
+        ICollection<ResourceAssembly> GetResourceAssembliesByProject(int projectID);
+
+        /// <summary>
         /// Imports resources from a whole assembly with all bundles.
         /// Also processes deletions.
         /// This runs a long time. (TODO maybe offer background call w/out statistics)

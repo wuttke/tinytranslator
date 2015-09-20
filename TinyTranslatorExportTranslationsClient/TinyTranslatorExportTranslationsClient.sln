@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyTranslatorExportTranslationsClient", "TinyTranslatorExportTranslationsClient\TinyTranslatorExportTranslationsClient.csproj", "{016C2C6B-2EB9-4DA4-AF33-1C5A75E078BF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyTranslatorApplicationServer", "..\TinyTranslatorApplicationServer\TinyTranslatorApplicationServer\TinyTranslatorApplicationServer.csproj", "{E6017956-B76A-49AD-8D3A-357AA2A003F2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{016C2C6B-2EB9-4DA4-AF33-1C5A75E078BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{016C2C6B-2EB9-4DA4-AF33-1C5A75E078BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{016C2C6B-2EB9-4DA4-AF33-1C5A75E078BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{016C2C6B-2EB9-4DA4-AF33-1C5A75E078BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6017956-B76A-49AD-8D3A-357AA2A003F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6017956-B76A-49AD-8D3A-357AA2A003F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6017956-B76A-49AD-8D3A-357AA2A003F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6017956-B76A-49AD-8D3A-357AA2A003F2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
