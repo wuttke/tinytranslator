@@ -34,7 +34,7 @@ namespace TinyTranslatorApplicationServer.Manager
                 exporter.ExportTranslationsForBundle(bundle, locale, bundleTranslations);
             }
             exporter.FinishTranslationExport();
-            return new FileStream(outDir + Path.DirectorySeparatorChar + assemblyName + ".dll", FileMode.Open);
+            return new FileStream(outDir + Path.DirectorySeparatorChar + assemblyName + ".resources.dll", FileMode.Open);
         }
 
     }

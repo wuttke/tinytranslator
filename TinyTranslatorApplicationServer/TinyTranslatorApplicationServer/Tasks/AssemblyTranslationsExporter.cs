@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Threading;
 using System.Web;
 using TinyTranslatorApplicationServer.Model;
 
@@ -17,6 +19,7 @@ namespace TinyTranslatorApplicationServer.Tasks
         private String outputDir;
         private String assemblyName;
         private String locale;
+        private ModuleBuilder moduleBuilder;
         private AssemblyBuilder assemblyBuilder;
 
         public AssemblyTranslationsExporter(String outputDir, String assemblyName, String locale)
@@ -32,29 +35,39 @@ namespace TinyTranslatorApplicationServer.Tasks
         {
             var assName = new AssemblyName();
             assName.CultureInfo = new CultureInfo(locale);
-            assName.Name = assemblyName;
-            assemblyBuilder = AssemblyBuilder.DefineDynamicAssembly(assName, AssemblyBuilderAccess.Save);
+            assName.Name = assemblyName + ".resources"; // XXX.resources.dll
+            assName.CodeBase = outputDir;
+
+            var domain = Thread.GetDomain();
+            assemblyBuilder = domain.DefineDynamicAssembly(assName, AssemblyBuilderAccess.Save, outputDir);
+
+            String fileName = assName.Name + ".dll";
+            moduleBuilder = assemblyBuilder.DefineDynamicModule(fileName, fileName);
         }
 
         public void ExportTranslationsForBundle(ResourceBundle bundle, String locale, List<ResourceTranslation> translations)
         {
-            String resourceName = bundle.Name + "." + locale;
-            var writer = assemblyBuilder.DefineResource(resourceName, "", resourceName + ".resources");
+            String resourceName = bundle.Name + "." + locale + ".resources";
+            var writer = moduleBuilder.DefineResource(resourceName, "", ResourceAttributes.Public);
             foreach (var translation in translations)
             {
                 Debug.Assert(translation.Locale == locale);
                 Debug.Assert(bundle.ID == translation.ResourceBundleID);
-                writer.AddResource(translation.Resource.Key, translation.BinaryValue);
+                if (translation.Resource.ResourceType == ResourceType.STRING)
+                    writer.AddResource(translation.Resource.Key, translation.StringValue);
+                else if (translation.Resource.ResourceType == ResourceType.IMAGE)
+                    writer.AddResource(translation.Resource.Key, Image.FromStream(new MemoryStream(translation.BinaryValue)));
+                else
+                {
+                    // may need to deserialize to Object first (this way it seems meta-information is lost)
+                    writer.AddResource(translation.Resource.Key, translation.BinaryValue);
+                }
             }
-            writer.Close();
         }
 
         public void FinishTranslationExport()
         {
-            String od = outputDir;
-            if (!od.EndsWith(Path.DirectorySeparatorChar.ToString()))
-                od += Path.DirectorySeparatorChar;
-            assemblyBuilder.Save(od + assemblyName + ".dll");
+            assemblyBuilder.Save(assemblyName + ".resources.dll");
         }
 
     }

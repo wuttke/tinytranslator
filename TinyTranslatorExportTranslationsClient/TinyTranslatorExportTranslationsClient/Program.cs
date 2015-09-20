@@ -31,7 +31,7 @@ namespace TinyTranslatorExportTranslationsClient
                 
                 foreach (var assembly in assemblies)
                 {
-                    var fileName = assDir + Path.DirectorySeparatorChar + assembly.FileName + ".dll";
+                    var fileName = assDir + Path.DirectorySeparatorChar + assembly.FileName + ".resources.dll";
                     
                     Console.WriteLine("Export assembly: {0}", assembly.FileName);
                     var assStream = service.ExportTranslationsToAssembly(assembly.ID, locale.LocaleCode);
