@@ -35,7 +35,7 @@ namespace TinyTranslatorImportTranslationsClient
         {
             String assemblyPath = Path.GetFullPath(fileName);
             Assembly ass = Assembly.LoadFile(assemblyPath);
-            TranslationCollector tc = new TranslationCollector(1, ass, SyncTranslationCallback);
+            AssemblyTranslationCollector tc = new AssemblyTranslationCollector(1, ass, SyncTranslationCallback);
             var stats = tc.CollectTranslations();
             logger.Info("New translations: {0}, existing: {1}", stats.AddedTranslations, stats.ExistingTranslations);
         }

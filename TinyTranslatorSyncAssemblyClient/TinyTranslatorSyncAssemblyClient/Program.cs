@@ -43,7 +43,7 @@ namespace TinyTranslatorSyncAssemblyClient
 
             Assembly ass = Assembly.LoadFile(assemblyPath);
 
-            ResourceCollector rc = new ResourceCollector(ass, CallSyncBundle, CallDeleteBundle);
+            AssemblyResourceCollector rc = new AssemblyResourceCollector(ass, CallSyncBundle, CallDeleteBundle);
             rc.CollectResourceAssembly();
             rc.CollectResourceBundles();
             rc.DeleteBundles();
