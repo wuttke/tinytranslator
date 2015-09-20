@@ -138,12 +138,16 @@
     <Compile Include="Services\TinyTranslatorTranslationService.svc.cs">
       <DependentUpon>TinyTranslatorTranslationService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Services\TranslationSelection.cs" />
+    <Compile Include="DAL\TranslationSelection.cs" />
     <Compile Include="Manager\AssemblyUtil.cs" />
-    <Compile Include="Tasks\ResourceCollector.cs" />
-    <Compile Include="Tasks\TranslationCollector.cs" />
+    <Compile Include="Tasks\AssemblyResourceCollector.cs" />
+    <Compile Include="Tasks\AssemblyTranslationCollector.cs" />
     <Compile Include="Manager\ImportResourcesManager.cs" />
     <Compile Include="Manager\ImportTranslationsManager.cs" />
+    <Compile Include="Tasks\AssemblyTranslationsExporter.cs" />
+    <Compile Include="Tasks\IResourceCollector.cs" />
+    <Compile Include="Tasks\ITranslationCollector.cs" />
+    <Compile Include="Tasks\ITranslationExporter.cs" />
     <Compile Include="Tasks\SyncResourcesTask.cs" />
     <Compile Include="Model\ResourceSyncStatistics.cs" />
     <Compile Include="Tasks\SyncTranslationsTask.cs" />

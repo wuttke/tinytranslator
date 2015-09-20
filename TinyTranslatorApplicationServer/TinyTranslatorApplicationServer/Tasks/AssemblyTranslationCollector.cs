@@ -13,7 +13,7 @@ namespace TinyTranslatorApplicationServer.Tasks
     /// <summary>
     /// Collects translations from a satellite assembly.
     /// </summary>
-    public class TranslationCollector
+    public class AssemblyTranslationCollector
     {
 
         private const String TRANSLATION_IMPORTER = "importer"; // TODO durch aktuellen Nutzer ersetzen?
@@ -24,7 +24,7 @@ namespace TinyTranslatorApplicationServer.Tasks
         private TranslationSyncCallback translationSyncCallback;
         private TranslationSyncStatistics statistics = new TranslationSyncStatistics();
 
-        public TranslationCollector(int projectID, Assembly assembly, TranslationSyncCallback translationSyncCallback)
+        public AssemblyTranslationCollector(int projectID, Assembly assembly, TranslationSyncCallback translationSyncCallback)
         {
             this.projectID = projectID;
             this.assembly = assembly;
@@ -117,7 +117,5 @@ namespace TinyTranslatorApplicationServer.Tasks
         }
 
     }
-
-    public delegate TranslationSyncStatistics TranslationSyncCallback(int projectID, String assemblyName, String bundleName, List<ResourceTranslation> translations);
 
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using TinyTranslatorApplicationServer.DAL;
 using TinyTranslatorApplicationServer.Manager;
 using TinyTranslatorApplicationServer.Model;
 

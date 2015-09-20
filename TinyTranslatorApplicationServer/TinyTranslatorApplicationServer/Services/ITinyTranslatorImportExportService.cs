@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using TinyTranslatorApplicationServer.DAL;
 using TinyTranslatorApplicationServer.Model;
 
 namespace TinyTranslatorApplicationServer.Services
@@ -35,6 +36,10 @@ namespace TinyTranslatorApplicationServer.Services
         [OperationContract]
         TranslationSyncStatistics ImportTranslationsFromAssembly(Stream assemblyStream);
         
+        /// <summary>
+        /// Creates a satellite assembly for the given translations.
+        /// </summary>
+        /// <param name="translations"></param>
         [OperationContract]
         Stream ExportTranslationsToAssembly(TranslationSelection translations);
 

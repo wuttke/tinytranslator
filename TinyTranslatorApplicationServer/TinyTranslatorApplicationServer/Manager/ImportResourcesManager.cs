@@ -24,7 +24,7 @@ namespace TinyTranslatorApplicationServer.Manager
 
         public ResourceSyncStatistics ImportResourcesFromAssembly(int projectID, Assembly assembly)
         {
-            var collector = new ResourceCollector(assembly, SyncBundleCallback, DeleteBundlesClassback);
+            var collector = new AssemblyResourceCollector(assembly, SyncBundleCallback, DeleteBundlesClassback);
             collector.CollectResourceAssembly();
             collector.CollectResourceBundles();
             collector.DeleteBundles();

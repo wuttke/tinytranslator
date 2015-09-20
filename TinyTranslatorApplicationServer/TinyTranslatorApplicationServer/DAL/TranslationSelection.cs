@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace TinyTranslatorApplicationServer.Services
+namespace TinyTranslatorApplicationServer.DAL
 {
     public class TranslationSelection
     {
@@ -12,6 +12,5 @@ namespace TinyTranslatorApplicationServer.Services
         public int AssemblyID { get; set; }
         public int? BundleID { get; set; }
         public int? ResourceID { get; set; }
-
     }
 }

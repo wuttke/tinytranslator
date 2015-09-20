@@ -13,7 +13,7 @@ using TinyTranslatorApplicationServer.Model;
 
 namespace TinyTranslatorApplicationServer.Tasks
 {
-    public class ResourceCollector
+    public class AssemblyResourceCollector : IResourceCollector
     {
 
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -25,7 +25,7 @@ namespace TinyTranslatorApplicationServer.Tasks
         private BundleSyncCallback bundleSyncCallback;
         private BundleDeleteCallback bundleDeleteCallback;
 
-        public ResourceCollector(Assembly assembly, BundleSyncCallback bundleSyncCallback, BundleDeleteCallback bundleDeleteCallback)
+        public AssemblyResourceCollector(Assembly assembly, BundleSyncCallback bundleSyncCallback, BundleDeleteCallback bundleDeleteCallback)
         {
             this.ass = assembly;
             this.bundleSyncCallback = bundleSyncCallback;
@@ -175,8 +175,5 @@ namespace TinyTranslatorApplicationServer.Tasks
         }
 
     }
-
-    public delegate ResourceSyncStatistics BundleSyncCallback(ResourceAssembly assembly, ResourceBundle bundle);
-    public delegate ResourceSyncStatistics BundleDeleteCallback(ResourceAssembly assembly, List<String> existingAssemblies);
 
 }

@@ -25,7 +25,7 @@ namespace TinyTranslatorApplicationServer.Manager
 
         public TranslationSyncStatistics ImportTranslationsFromAssembly(int projectID, Assembly assembly)
         {
-            var collector = new TranslationCollector(projectID, assembly, SyncTranslationsCallback);
+            var collector = new AssemblyTranslationCollector(projectID, assembly, SyncTranslationsCallback);
             return collector.CollectTranslations();
         }
 
