@@ -9,6 +9,8 @@ namespace TinyTranslatorApplicationServer.Model
     [TrackChanges]
     public class ResourceTranslation
     {
+
+        [SkipTracking]
         public int ID { get; set; }
      
         [SkipTracking]
@@ -30,6 +32,8 @@ namespace TinyTranslatorApplicationServer.Model
         public String Locale { get; set; }
         
         public String StringValue { get; set; }
+        
+        [SkipTracking]
         public byte[] BinaryValue { get; set; }
         
         public TranslationStatus TranslationStatus { get; set; }

@@ -110,10 +110,14 @@
     <Compile Include="DAL\ResourceRepository.cs" />
     <Compile Include="DAL\ResourceTranslationRepository.cs" />
     <Compile Include="DAL\TinyTranslatorDbContext.cs" />
-    <Compile Include="DAL\TinyTranslatorDbInitializer.cs" />
     <Compile Include="Manager\ExportTranslationsManager.cs" />
     <Compile Include="Manager\SyncResourcesManager.cs" />
     <Compile Include="Manager\SyncTranslationsManager.cs" />
+    <Compile Include="Migrations\201509190648030_InitialCreate.cs" />
+    <Compile Include="Migrations\201509190648030_InitialCreate.Designer.cs">
+      <DependentUpon>201509190648030_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Project.cs" />
     <Compile Include="Model\ProjectLocale.cs" />
     <Compile Include="Model\Resource.cs" />
@@ -173,6 +177,11 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201509190648030_InitialCreate.resx">
+      <DependentUpon>201509190648030_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
